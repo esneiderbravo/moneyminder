@@ -3,5 +3,8 @@
     "language_titles": {
         "en_us": "English",
         "es_es": "Spanish"
+    },
+    "login_messages": {
+        "success": "User authenticated successfully!"
     }
 }

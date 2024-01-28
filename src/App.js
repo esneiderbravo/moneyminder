@@ -2,6 +2,9 @@ import React from "react"
 import { createTheme, GlobalStyles, ThemeProvider } from "@mui/material"
 import Main from "./modules/components/Main"
 import { AppProvider } from "./modules/providers/AppProvider"
+import { GoogleOAuthProvider } from "@react-oauth/google"
+import { GOOGLE_AUTH_CLIENT_ID } from "./modules/constants/constants"
+import HeaderContent from "./modules/components/header/HeaderContent"
 
 const familyFont = ["Poppins", "Maven Pro"].join(",")
 const theme = createTheme({
@@ -68,12 +71,15 @@ const theme = createTheme({
 const App = () => {
     return (
         <React.StrictMode>
-            <AppProvider>
-                <ThemeProvider theme={theme}>
-                    <GlobalStyles styles={{ body: theme.body }} />
-                    <Main />
-                </ThemeProvider>
-            </AppProvider>
+            <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+                <AppProvider>
+                    <ThemeProvider theme={theme}>
+                        <GlobalStyles styles={{ body: theme.body }} />
+                        <HeaderContent />
+                        <Main />
+                    </ThemeProvider>
+                </AppProvider>
+            </GoogleOAuthProvider>
         </React.StrictMode>
     )
 }

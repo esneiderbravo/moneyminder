@@ -11,6 +11,7 @@ const AppContext = createContext()
  * */
 export const AppProvider = ({ children }) => {
     const [language, setLanguage] = useState(english)
+    const [notification, setNotification] = useState({ type: null, info: null })
 
     /**
      * Handle language change events
@@ -34,9 +35,13 @@ export const AppProvider = ({ children }) => {
     const value = {
         handleChangeLanguage: handleChangeLanguage,
         language: language,
+        notification: notification,
+        setNotification: setNotification,
     }
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
+
+AppProvider.propTypes = {}
 
 export const useAppContext = () => useContext(AppContext)
