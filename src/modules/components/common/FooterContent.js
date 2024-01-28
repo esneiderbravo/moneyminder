@@ -1,30 +1,37 @@
-import { Avatar, Grid, MenuItem, Typography } from "@mui/material"
-import NotificationContent from "../notification/NotificationContent"
+import { Avatar, Grid, MenuItem, Typography } from "@mui/material";
 import {
     CustomSelect,
     GridCustom,
     GridSelect,
-} from "../../styles/layout/Layout.styled"
-import usaIcon from "../../../resources/layout/usa.png"
-import spainIcon from "../../../resources/layout/spain.png"
-import React from "react"
-import { useAppContext } from "../../providers/AppProvider"
+} from "../../styles/layout/Layout.styled";
+import usaIcon from "../../../resources/layout/usa.png";
+import spainIcon from "../../../resources/layout/spain.png";
+import React from "react";
+import { useAppContext } from "../../providers/AppProvider";
 
-const HeaderContent = () => {
-    const { language, handleChangeLanguage } = useAppContext()
+/**
+ * Footer Content Component
+ * @return React.JSX.Element
+ * */
+const FooterContent = () => {
+    const { language, handleChangeLanguage } = useAppContext();
     return (
-        <Grid container spacing={2} display="flex">
-            <Grid
-                item
-                xs={10.5}
-                md={10.5}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-            >
-                <NotificationContent />
+        <Grid
+            container
+            spacing={2}
+            sx={{ position: "fixed", bottom: "10px", right: "10px" }}
+        >
+            <Grid item xs={7} md={10.5} display="flex">
+                <Typography
+                    variant="h6"
+                    display="flex"
+                    alignItems="center"
+                    sx={{ marginLeft: "auto" }}
+                >
+                    {language["changeLangTitle"]}
+                </Typography>
             </Grid>
-            <GridSelect item xs={1.5} md={1.5}>
+            <GridSelect item xs={5} md={1.5}>
                 <CustomSelect
                     onChange={handleChangeLanguage}
                     autoWidth
@@ -44,7 +51,7 @@ const HeaderContent = () => {
                         <GridCustom>
                             <Avatar src={usaIcon} alt="Usa Icon" />
                             <Typography variant="h6" color="white.main">
-                                {language["language_titles"]["en_us"]}
+                                {language["langTitles"]["en"]}
                             </Typography>
                         </GridCustom>
                     </MenuItem>
@@ -52,16 +59,19 @@ const HeaderContent = () => {
                         <GridCustom>
                             <Avatar src={spainIcon} alt="Spain Icon" />
                             <Typography variant="h6" color="white.main">
-                                {language["language_titles"]["es_es"]}
+                                {language["langTitles"]["es"]}
                             </Typography>
                         </GridCustom>
                     </MenuItem>
                 </CustomSelect>
             </GridSelect>
         </Grid>
-    )
-}
+    );
+};
 
-HeaderContent.propTypes = {}
+/**
+ * FooterContent propTypes
+ * */
+FooterContent.propTypes = {};
 
-export default HeaderContent
+export default FooterContent;

@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react"
-import english from "../language/en_us.json"
-import spanish from "../language/es_es.json"
+import React, { createContext, useContext, useState } from "react";
+import english from "../language/en_us.json";
+import spanish from "../language/es_es.json";
 
-const AppContext = createContext()
+const AppContext = createContext();
 
 /**
  * AppProvider component
@@ -10,38 +10,41 @@ const AppContext = createContext()
  * @return {JSX.Element} - component to render with application
  * */
 export const AppProvider = ({ children }) => {
-    const [language, setLanguage] = useState(english)
-    const [notification, setNotification] = useState({ type: null, info: null })
+    const [language, setLanguage] = useState(english);
+    const [notification, setNotification] = useState({
+        type: null,
+        info: null,
+    });
 
     /**
      * Handle language change events
      * @param {EventTarget} event - event with language change target.
      * **/
     const handleChangeLanguage = (event) => {
-        const languageSelected = event.target.value
+        const languageSelected = event.target.value;
         switch (languageSelected) {
             case "en_us":
-                setLanguage(english)
-                break
+                setLanguage(english);
+                break;
             case "es_es":
-                setLanguage(spanish)
-                break
+                setLanguage(spanish);
+                break;
             default:
-                setLanguage(english)
-                break
+                setLanguage(english);
+                break;
         }
-    }
+    };
 
     const value = {
         handleChangeLanguage: handleChangeLanguage,
         language: language,
         notification: notification,
         setNotification: setNotification,
-    }
+    };
 
-    return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}
+    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
 
-AppProvider.propTypes = {}
+AppProvider.propTypes = {};
 
-export const useAppContext = () => useContext(AppContext)
+export const useAppContext = () => useContext(AppContext);
