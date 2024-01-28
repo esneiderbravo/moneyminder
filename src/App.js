@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { createTheme, GlobalStyles, ThemeProvider } from "@mui/material"
 import Main from "./modules/components/Main"
+import { AppProvider } from "./modules/providers/AppProvider"
 
-const familyFont = ["Poppins", "Maven Pro"].join(",")
+const familyFont = ["Skratch Punk", "Poppins", "Maven Pro"].join(",")
 const theme = createTheme({
     body: {
         width: "100%",
@@ -65,10 +66,12 @@ const theme = createTheme({
 const App = () => {
     return (
         <React.StrictMode>
-            <ThemeProvider theme={theme}>
-                <GlobalStyles styles={{ body: theme.body }} />
-                <Main />
-            </ThemeProvider>
+            <AppProvider>
+                <ThemeProvider theme={theme}>
+                    <GlobalStyles styles={{ body: theme.body }} />
+                    <Main />
+                </ThemeProvider>
+            </AppProvider>
         </React.StrictMode>
     )
 }
