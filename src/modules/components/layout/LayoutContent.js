@@ -1,8 +1,14 @@
-import React from "react"
-import { Container, Grid, Typography } from "@mui/material"
-import GoogleSignInContainer from "../../containers/google/GoogleSignInContainer"
+import React from "react";
+import { Container, Grid, Typography } from "@mui/material";
+import GoogleSignInContainer from "../../containers/login/GoogleSignInContainer";
+import { useAppContext } from "../../providers/AppProvider";
 
+/**
+ * Layout Content Component
+ * @return React.JSX.Element
+ * */
 const LayoutContent = () => {
+    const { language } = useAppContext();
     return (
         <Container
             maxWidth="auto"
@@ -10,20 +16,23 @@ const LayoutContent = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "center",
+                minHeight: "80vh",
             }}
         >
             <Grid item xs={12} md={12}>
-                <Typography variant="h1" gutterBottom>
-                    Money Minder
-                </Typography>
+                <Typography variant="h1">{language["title"]}</Typography>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} mt="50px">
                 <GoogleSignInContainer />
             </Grid>
         </Container>
-    )
-}
+    );
+};
 
-LayoutContent.propTypes = {}
+/**
+ * Layout Content propTypes
+ * */
+LayoutContent.propTypes = {};
 
-export default LayoutContent
+export default LayoutContent;

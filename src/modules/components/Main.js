@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LayoutContainer from "../containers/layout/LayoutContainer"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LayoutContainer from "../containers/layout/LayoutContainer";
 
 export default function Main() {
     return (
@@ -8,7 +8,7 @@ export default function Main() {
                 <Route path="/" element={<LayoutContainer />} />
             </Routes>
         </BrowserRouter>
-    )
+    );
 }
 
-Main.propTypes = {}
+Main.propTypes = {};
