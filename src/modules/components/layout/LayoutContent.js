@@ -1,15 +1,13 @@
-import {
-    Avatar,
-    Container,
-    Grid,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    Typography,
-} from "@mui/material"
+import React from "react"
+import { Avatar, Container, Grid, MenuItem, Typography } from "@mui/material"
 import PropTypes from "prop-types"
 import usaIcon from "../../../resources/layout/usa.png"
 import spainIcon from "../../../resources/layout/spain.png"
+import {
+    CustomSelect,
+    GridCustom,
+    GridSelect,
+} from "../../styles/layout/Layout.styled"
 
 const LayoutContent = ({ language, handleChangeLanguage }) => {
     return (
@@ -21,27 +19,46 @@ const LayoutContent = ({ language, handleChangeLanguage }) => {
                 alignItems: "center",
             }}
         >
-            <Grid item xs={12} md={12} sx={{ display: "flex", right: 0 }}>
-                <Select
+            <GridSelect item xs={12} md={12}>
+                <CustomSelect
                     onChange={handleChangeLanguage}
-                    input={<OutlinedInput />}
                     autoWidth
                     defaultValue="en_us"
+                    inputProps={{
+                        MenuProps: {
+                            MenuListProps: {
+                                sx: {
+                                    backgroundColor: (theme) => theme.body.backgroundColor,
+                                },
+                            },
+                        },
+                    }}
                 >
                     <MenuItem value="en_us">
-                        <Avatar src={usaIcon} alt="Usa Icon" />
-                        <em> {language["language_titles"]["en_us"]}</em>
+                        <GridCustom>
+                            <Avatar src={usaIcon} alt="Usa Icon" />
+                            <Typography variant="h6" color="white.main">
+                                {language["language_titles"]["en_us"]}
+                            </Typography>
+                        </GridCustom>
                     </MenuItem>
                     <MenuItem value="es_es">
-                        <Avatar src={spainIcon} alt="Spain Icon" />
-                        <em>{language["language_titles"]["es_es"]}</em>
+                        <GridCustom>
+                            <Avatar src={spainIcon} alt="Spain Icon" />
+                            <Typography variant="h6" color="white.main">
+                                {language["language_titles"]["es_es"]}
+                            </Typography>
+                        </GridCustom>
                     </MenuItem>
-                </Select>
-            </Grid>
+                </CustomSelect>
+            </GridSelect>
             <Grid item xs={12} md={12}>
                 <Typography variant="h1" gutterBottom>
                     Money Minder
                 </Typography>
+            </Grid>
+            <Grid item xs={12} md={12}>
+
             </Grid>
         </Container>
     )

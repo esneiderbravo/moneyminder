@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { createTheme, GlobalStyles, ThemeProvider } from "@mui/material"
 import Main from "./modules/components/Main"
 import { AppProvider } from "./modules/providers/AppProvider"
 
-const familyFont = ["Skratch Punk", "Poppins", "Maven Pro"].join(",")
+const familyFont = ["Poppins", "Maven Pro"].join(",")
 const theme = createTheme({
     body: {
         width: "100%",
+        height: "100%",
         margin: 0,
         overflowX: "hidden",
         backgroundColor: "#282c34",
+        color: "white",
     },
     palette: {
         type: "light",
