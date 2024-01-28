@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext, useContext, useState } from "react"
 import english from "../language/en_us.json"
 import spanish from "../language/es_es.json"
 
