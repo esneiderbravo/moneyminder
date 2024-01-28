@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LayoutContainer from "../containers/LayoutContainer"
 
-export default function Main({ props }) {
+export default function Main() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LayoutContainer props />} />
+                <Route path="/" element={<LayoutContainer />} />
             </Routes>
         </BrowserRouter>
     )
