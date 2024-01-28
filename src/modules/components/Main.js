@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LayoutContainer from "../containers/LayoutContainer"
 
@@ -11,6 +10,3 @@ export default function Main() {
         </BrowserRouter>
     )
 }
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<Main />)

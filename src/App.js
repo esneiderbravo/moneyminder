@@ -1,14 +1,14 @@
-import "./App.css"
-import { createTheme, ThemeProvider } from "@mui/material"
+import React from "react"
+import { createTheme, GlobalStyles, ThemeProvider } from "@mui/material"
 import Main from "./modules/components/Main"
 
 const familyFont = ["Poppins", "Maven Pro"].join(",")
 const theme = createTheme({
     body: {
-        width: "200%",
+        width: "100%",
         margin: 0,
         overflowX: "hidden",
-        backgroundColor: "#fafaff",
+        backgroundColor: "#282c34",
     },
     palette: {
         type: "light",
@@ -64,9 +64,12 @@ const theme = createTheme({
 })
 const App = () => {
     return (
-        <ThemeProvider theme={theme}>
-            <Main />
-        </ThemeProvider>
+        <React.StrictMode>
+            <ThemeProvider theme={theme}>
+                <GlobalStyles styles={{ body: theme.body }} />
+                <Main />
+            </ThemeProvider>
+        </React.StrictMode>
     )
 }
 
