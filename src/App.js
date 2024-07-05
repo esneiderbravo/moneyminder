@@ -3,9 +3,10 @@ import { createTheme, GlobalStyles, ThemeProvider } from "@mui/material";
 import Main from "./modules/components/Main";
 import { AppProvider } from "./modules/providers/AppProvider";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GOOGLE_AUTH_CLIENT_ID } from "./modules/constants/constants";
+import { GOOGLE_AUTH_CLIENT_ID } from "./modules/utils/constants";
 import HeaderContent from "./modules/components/common/HeaderContent";
 import FooterContent from "./modules/components/common/FooterContent";
+import { AuthProvider } from "./modules/providers/AuthProvider";
 
 const familyFont = ["Poppins", "Maven Pro"].join(",");
 const theme = createTheme({
@@ -74,12 +75,14 @@ const App = () => {
         <React.StrictMode>
             <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                 <AppProvider>
-                    <ThemeProvider theme={theme}>
-                        <GlobalStyles styles={{ body: theme.body }} />
-                        <HeaderContent />
-                        <Main />
-                        <FooterContent />
-                    </ThemeProvider>
+                    <AuthProvider>
+                        <ThemeProvider theme={theme}>
+                            <GlobalStyles styles={{ body: theme.body }} />
+                            <HeaderContent />
+                            <Main />
+                            <FooterContent />
+                        </ThemeProvider>
+                    </AuthProvider>
                 </AppProvider>
             </GoogleOAuthProvider>
         </React.StrictMode>

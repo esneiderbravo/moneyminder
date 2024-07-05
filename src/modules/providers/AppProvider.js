@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import english from "../language/en_us.json";
 import spanish from "../language/es_es.json";
+import PropTypes from "prop-types";
 
 const AppContext = createContext();
 
@@ -45,6 +46,8 @@ export const AppProvider = ({ children }) => {
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-AppProvider.propTypes = {};
+AppProvider.propTypes = {
+    children: PropTypes.node,
+};
 
 export const useAppContext = () => useContext(AppContext);
