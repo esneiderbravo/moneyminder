@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppContext } from "../../providers/AppProvider";
-import GoogleSignInContent from "../../components/login/GoogleSignInContent";
+import GoogleSignInContent from "../../components/auth/GoogleSignInContent";
+import { useAuthContext } from "../../providers/AuthProvider";
 
 /**
  * Google Sign In Container Component
@@ -8,6 +9,7 @@ import GoogleSignInContent from "../../components/login/GoogleSignInContent";
  * */
 const GoogleSignInContainer = () => {
     const { language, setNotification } = useAppContext();
+    const { handleAuthentication } = useAuthContext();
 
     /**
      * Handle the Google response
@@ -17,8 +19,9 @@ const GoogleSignInContainer = () => {
         if (credential) {
             setNotification({
                 type: "success",
-                info: language["login_messages"]["success"],
+                info: language["loginMessages"]["success"],
             });
+            handleAuthentication(credential);
         }
     };
 

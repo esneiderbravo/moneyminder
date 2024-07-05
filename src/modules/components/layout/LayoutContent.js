@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
-import GoogleSignInContainer from "../../containers/login/GoogleSignInContainer";
+import GoogleSignInContainer from "../../containers/auth/GoogleSignInContainer";
 import { useAppContext } from "../../providers/AppProvider";
 
 /**
